@@ -6,12 +6,12 @@ def get_user(db: Session, user_id: int):
     return db.query(models.User).filter(models.User.id == user_id).first()
 
 def get_users(db: Session, skip: int = 0, limit: int = 10):
-    return db.query(models.user).offset(skip).limit(limit).all()
+    return db.query(models.User).offset(skip).limit(limit).all()
 
 def create_users(db: Session, user: schemas.UserCreate):
     hashed_password = utils.hash(user.password)
     user.password = hashed_password
-    db_user = models.user(**user.dict())
+    db_user = models.User(**user.dict())
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
