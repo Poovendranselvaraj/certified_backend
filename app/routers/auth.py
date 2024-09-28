@@ -35,10 +35,10 @@ def register(user: schemas.UserCreate, db: Session = Depends(database.get_db)):
     db.refresh(new_user)
     return new_user
 
-@router.get("/aaa")
-def rough(db: Session = Depends(database.get_db)):
-    user=4
-    data=db.query(models.User).filter(models.user.id == user).first()
-    print(data.__dict__)
-    print(data.certificates)
-    return data
+# @router.get("/aaa")
+# def rough(db: Session = Depends(database.get_db)):
+#     user=4
+#     data=db.query(models.User).filter(models.user.id == user).first()
+#     print(data.__dict__)
+#     print(data.certificates)
+#     return data

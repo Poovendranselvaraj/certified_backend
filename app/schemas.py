@@ -28,7 +28,7 @@ class Certificate(CertificateBase):
 class UserBase(BaseModel):
     name: str
     email: str
-    department: str
+    
 
 class UserCreate(UserBase):
     password: str
@@ -45,7 +45,7 @@ class User(UserBase):
 
     class Config:
         orm_mode = True
-    
+
 class Token(BaseModel):
     access_token:str
     Token_type: str

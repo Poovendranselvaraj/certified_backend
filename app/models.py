@@ -8,12 +8,13 @@ class User(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)
     email = Column(String, unique=True, index=True)
-    certificates = relationship("Certificate", back_populates="owner")
+    password = Column(String)
+    # certificates = relationship("Certificate", back_populates="owner")
 
-class Certificate(Base):
-    __tablename__ = "certificates"
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, index=True)  # e.g., "Python Certification"
-    issued_date = Column(DateTime, default=datetime.utcnow)
-    user_id = Column(Integer, ForeignKey("users.id"))
-    owner = relationship("User", back_populates="certificates")
+# class Certificate(Base):
+#     __tablename__ = "certificates"
+#     id = Column(Integer, primary_key=True, index=True)
+#     name = Column(String, index=True)  # e.g., "Python Certification"
+#     issued_date = Column(DateTime, default=datetime.utcnow)
+#     user_id = Column(Integer, ForeignKey("users.id"))
+#     owner = relationship("User", back_populates="certificates")
