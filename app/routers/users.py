@@ -10,9 +10,9 @@ router = APIRouter(tags=['Certificates'])
 def create_Certificate(user_id: int, certificate: schemas.CertificateCreate, db: Session = Depends(get_db)):
     return crud.create_certificate(db=db, certificate=certificate, user_id=user_id)
 
-@router.get("/users/{user_id}/certificates/", response_model=List[schemas.Certificate])
-def read_certificates(user_id: int, skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
-    return crud.get_certificates(db=db, user_id=user_id, skip=skip, limit=limit)
+# @router.get("/users/{user_id}/certificates/", response_model=List[schemas.Certificate])
+# def read_certificates(user_id: int, skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
+#     return crud.get_certificates(db=db, user_id=user_id, skip=skip, limit=limit)
 
 
 # @router.get("/users/certificates/start_day/",response_model=schemas.DayStart)
