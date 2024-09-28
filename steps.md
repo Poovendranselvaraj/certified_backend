@@ -9,3 +9,5 @@ step:2
 create database and models
 add routers
 create route for signup and check if it works
+
+To run: uvicorn app.main:app --reload
