@@ -20,6 +20,18 @@ def create_users(db: Session, user: schemas.UserCreate):
 def get_certificate(db: Session, user_id: int, skip: int = 0, limit: int = 10):
     return db.query(models.Certificate).filter(models.Certificate.user_id == user_id).offset(skip).limit(limit).all()
 
+def createadmin(db: Session):
+    if db.query(models.User).filter(models.User.email == "admin@gmail.com").first():
+        return
+    password = utils.hash("admin")
+    user = models.User(email="admin@gmail.com", role="admin",password=password)
+    db.add(user)
+    db.commit()
+    db.refresh(user)
+    return user
+
+
+
 # def start_day(db: Session, user_id: int):
 #     certificate=models.certificate(user_id=user_id, start_day=datetime.utcnow())
 #     db.add(certificate)
